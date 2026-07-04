@@ -1,4 +1,4 @@
-# SHADE_OS 🚀
+# Shade CLI
 **Terminal AI Agent Kernel**
 
 SHADE is an elite, minimal, and fully-featured AI assistant designed to live entirely in your terminal. It ditches standard chat bubbles for a rigid, structural "Kernel OS" aesthetic, offering a seamless, keyboard-driven interface for power users.
