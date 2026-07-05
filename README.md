@@ -1,34 +1,110 @@
-# Shade CLI
-**Terminal AI Agent Kernel**
+# SHADE CLI
 
-SHADE is an elite, minimal, and fully-featured AI assistant designed to live entirely in your terminal. It ditches standard chat bubbles for a rigid, structural "Kernel OS" aesthetic, offering a seamless, keyboard-driven interface for power users.
+<p align="center">
+  <img src="assets/preview.png" alt="SHADE CLI Preview" width="100%">
+</p>
+
+<p align="center">
+  <strong>A terminal-native AI agent built for developers.</strong>
+</p>
+
+SHADE CLI is a modern, terminal-native AI agent built for developers who live in the command line. Inspired by operating system kernels, it replaces traditional chat interfaces with a clean, keyboard-first experience focused on speed, structure, and productivity.
+
+Designed to be model-agnostic, SHADE lets you seamlessly switch between local and cloud AI providers while maintaining a consistent user experience.
+
+---
 
 ## Features
-- **Dual-State Interface**: A structural `[ SYSTEM ONLINE ]` boot sequence and a strict `[ TTY ]` kernel-style active state.
-- **Multiple Local & Cloud Providers**: Supports `ollama`, `groq`, `anthropic`, `gemini`, and `openai`.
-- **Keyboard Driven**: Advanced shortcuts via `prompt_toolkit`.
-- **Herta Persona**: An elite AI engineering assistant with a dry, analytical, and effortlessly confident demeanor.
+
+- Terminal-first, keyboard-driven interface
+- Clean kernel-inspired UI
+- Multiple AI providers
+  - Ollama
+  - Anthropic
+  - OpenAI
+  - Google Gemini
+  - Groq
+- Switchable personas (`/persona`)
+- Runtime model switching (`/model`)
+- Extensible architecture for future tools and providers
+- Lightweight and fast
+
+---
 
 ## Installation
-Ensure you have Python 3.10+ installed.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/shade.git
-   cd shade
-   ```
-2. Set up the virtual environment:
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate
-   ```
-3. Install requirements:
-   ```bash
-   pip install -e .
-   ```
+### Prerequisites
+
+- Python 3.10+
+- Git
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/shade.git
+cd shade
+```
+
+### Create a virtual environment
+
+**Windows**
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### Install dependencies
+
+```bash
+pip install -e .
+```
+
+---
 
 ## Usage
-Start the kernel:
+
+Launch SHADE:
+
 ```bash
 shade
 ```
+
+### Built-in Commands
+
+```text
+/model      Change the active AI model
+/provider   Switch AI provider
+/persona    Change the assistant personality
+/help       Show available commands
+/clear      Clear the terminal
+/exit       Exit SHADE
+```
+
+---
+
+## Philosophy
+
+SHADE is built around a simple philosophy:
+
+- Terminal-native
+- Keyboard-first
+- Model-agnostic
+- Fast
+- Minimal
+- Extensible
+
+The goal is to make AI feel like a natural extension of the terminal rather than another chat application.
+
+---
+
+## License
+
+Licensed under the MIT License.
