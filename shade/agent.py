@@ -65,25 +65,21 @@ async def run_agent(ctx: ConversationContext, renderer: Renderer):
             ctx.add_assistant(full_response, model=ctx.active_model)
     
             tool_executed = False
-            # Basic markdown tool parsing (ReAct fallback for non-native tools)
-            if "Action:" in full_response and "Action Input:" in full_response:
-                lines = full_response.splitlines()
-                action = None
-                for idx, line in enumerate(lines):
-                    if line.startswith("Action:"):
-                        action = line.split(":", 1)[1].strip()
-                    elif line.startswith("Action Input:") and action:
-                        try:
-                            args_str = line.split(":", 1)[1].strip()
-                            args = json.loads(args_str)
-                            renderer.print(f"[tool]Running tool: {action}[/tool]")
-                            result = dispatch(action, args)
-                            ctx.add_tool_result(action, result)
-                            renderer.render_message(ctx.messages[-1])
-                            tool_executed = True
-                        except Exception as e:
-                            renderer.print(f"[danger]Tool parsing error: {e}[/danger]")
-                        action = None
+            # Markdown tool parsing (ReAct fallback for non-native tools)
+            import re
+            match = re.search(r"Action:\s*([^\n]+)\s*\nAction Input:\s*(\{.*?\})", full_response, re.DOTALL)
+            if match:
+                action = match.group(1).strip()
+                args_str = match.group(2).strip()
+                try:
+                    args = json.loads(args_str)
+                    renderer.print(f"[tool]Running tool: {action}[/tool]")
+                    result = dispatch(action, args)
+                    ctx.add_tool_result(action, result)
+                    renderer.render_message(ctx.messages[-1])
+                    tool_executed = True
+                except Exception as e:
+                    renderer.print(f"[danger]Tool parsing error: {e}[/danger]")
                         
             # If no tool was executed in this turn, break the loop to ask the user for input
             if not tool_executed:

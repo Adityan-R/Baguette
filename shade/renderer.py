@@ -44,9 +44,13 @@ COMMANDS = [
     ("/keys", "View stored API keys"),
     ("/key set", "Securely store an API key"),
     ("/key delete", "Remove an API key"),
+    ("/save", "Save active session"),
+    ("/load", "Load session from disk"),
+    ("/sessions", "List saved sessions"),
     ("/history", "View conversation history"),
     ("/clear", "Clear session history"),
     ("/persona", "Change agent personality"),
+    ("/help", "Show command menu"),
     ("/exit", "Save session and exit")
 ]
 

@@ -95,6 +95,58 @@ async def handle_slash_command(user_input: str, ctx: ConversationContext, render
             renderer.print(f"[info]Available personas: {', '.join(PERSONAS.keys())}[/info]\n[dim]Usage: /persona <name>[/dim]")
         return True
 
+    elif cmd == "/save":
+        from .session import save_session
+        session_name = parts[1] if len(parts) > 1 else None
+        saved_path = save_session(ctx, session_name)
+        renderer.print(f"[success]✓ Session saved to {saved_path}[/success]")
+        return True
+
+    elif cmd == "/load":
+        from .session import load_session
+        if len(parts) > 1:
+            session_name = parts[1]
+            loaded_ctx = load_session(session_name)
+            if loaded_ctx:
+                ctx.session_id = loaded_ctx.session_id
+                ctx.messages = loaded_ctx.messages
+                ctx.active_model = loaded_ctx.active_model
+                ctx.system_prompt = loaded_ctx.system_prompt
+                ctx.working_dir = loaded_ctx.working_dir
+                ctx.metadata = loaded_ctx.metadata
+                renderer.print(f"[success]✓ Loaded session '{session_name}' ({len(ctx.messages)} messages)[/success]")
+        else:
+            renderer.print("[info]Usage: /load <session_name>[/info]")
+        return True
+
+    elif cmd == "/sessions":
+        from .session import list_sessions
+        sessions = list_sessions()
+        if sessions:
+            renderer.print("\n[bold]Saved Sessions:[/bold]")
+            for s in sessions:
+                renderer.print(f"  ● {s}")
+        else:
+            renderer.print("[info]No saved sessions found.[/info]")
+        return True
+
+    elif cmd == "/help":
+        renderer.print("\n[bold]Available Commands:[/bold]")
+        renderer.print("  /model <name>       Switch active AI model")
+        renderer.print("  /models             List available models and availability")
+        renderer.print("  /providers          View provider status")
+        renderer.print("  /keys               View API key status")
+        renderer.print("  /key set <provider> Store an API key securely in keychain")
+        renderer.print("  /key delete <prov>  Delete a stored API key")
+        renderer.print("  /save [name]        Save active session")
+        renderer.print("  /load <name>        Load session from disk")
+        renderer.print("  /sessions           List saved sessions")
+        renderer.print("  /history            View message history")
+        renderer.print("  /clear              Clear conversation history")
+        renderer.print("  /persona [name]     Switch agent personality")
+        renderer.print("  /exit               Exit SHADE")
+        return True
+
     else:
         renderer.print(f"[warning]Unknown command: {cmd}[/warning]")
         return True
