@@ -1,16 +1,16 @@
-# SHADE CLI
+# Baguette
 
 <p align="center">
-  <img src="assets/preview.png" alt="SHADE CLI Preview" width="100%">
+  <img src="assets/preview.png" alt="Preview" width="100%">
 </p>
 
 <p align="center">
   <strong>A terminal-native AI agent built for developers.</strong>
 </p>
 
-SHADE CLI is a modern, terminal-native AI agent built for developers who live in the command line. Inspired by operating system kernels, it replaces traditional chat interfaces with a clean, keyboard-first experience focused on speed, structure, and productivity.
+Baguette is a modern, terminal-native AI agent built for developers who live in the command line. Inspired by operating system kernels, it replaces traditional chat interfaces with a clean, keyboard-first experience focused on speed, structure, and productivity.
 
-Designed to be model-agnostic, SHADE lets you seamlessly switch between local and cloud AI providers while maintaining a consistent user experience.
+Designed to be model-agnostic, Baguette lets you seamlessly switch between local and cloud AI providers while maintaining a consistent user experience.
 
 ---
 
@@ -41,8 +41,8 @@ Designed to be model-agnostic, SHADE lets you seamlessly switch between local an
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/shade.git
-cd shade
+git clone https://github.com/yourusername/Baguette.git
+cd Baguette
 ```
 
 ### Create a virtual environment
@@ -71,10 +71,10 @@ pip install -e .
 
 ## Usage
 
-Launch SHADE:
+Launch Baguette:
 
 ```bash
-shade
+Baguette
 ```
 
 ### Built-in Commands
@@ -85,14 +85,14 @@ shade
 /persona    Change the assistant personality
 /help       Show available commands
 /clear      Clear the terminal
-/exit       Exit SHADE
+/exit       Exit Baguette
 ```
 
 ---
 
 ## Philosophy
 
-SHADE is built around a simple philosophy:
+Baguette is built around a simple philosophy:
 
 - Terminal-native
 - Keyboard-first
